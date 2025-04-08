@@ -1,4 +1,4 @@
-ONLINE HOTEL BOOKING WEBSITE
+ONLINE HOTEL BOOKING WEBSITE:-
 This is a fully responsive and user-friendly online hotel booking platform that allows users to search, view, and book hotels with ease. Designed with UX/UI in mind, this web application helps users find the perfect stay based on location, budget, and preferences.
 
 ✨ Features
