@@ -106,3 +106,29 @@
     });
     
 })(jQuery);
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Booking Form
+    const bookingButton = document.querySelector(".btn.btn-primary.w-100");
+    if (bookingButton) {
+        bookingButton.addEventListener("click", async () => {
+            const checkIn = document.querySelector('#date1 input')?.value;
+            const checkOut = document.querySelector('#date2 input')?.value;
+            const adult = document.querySelectorAll("select")[0]?.value;
+            const child = document.querySelectorAll("select")[1]?.value;
+
+            try {
+                const response = await fetch('/book', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ checkIn, checkOut, adult, child })
+                });
+
+                const result = await response.json();
+                alert(result.message);
+            } catch (error) {
+                alert("Error submitting booking");
+            }
+        });
+    }
+});
