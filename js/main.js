@@ -126,8 +126,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const result = await response.json();
                 alert(result.message);
-            // } catch (error) {
-            //     alert("Error submitting booking");
+            } catch (error) {
+                alert("Error submitting booking");
             }
         });
     }
@@ -152,10 +152,8 @@ document.addEventListener('DOMContentLoaded', function () {
         message.style.color = 'red';
       }
     });
-<<<<<<< HEAD
   });
-=======
-  });
+//   });
 
 
   document.addEventListener("DOMContentLoaded", function () {
@@ -182,4 +180,3 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
->>>>>>> a388445 (changes in js for submitting the booking form.)
