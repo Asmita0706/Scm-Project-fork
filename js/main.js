@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-
+//service page newsletter email submission
 document.addEventListener('DOMContentLoaded', function () {
     const submitBtn = document.getElementById('newsletterSubmit');
     const emailInput = document.getElementById('newsletterEmail');
