@@ -126,8 +126,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const result = await response.json();
                 alert(result.message);
-            } catch (error) {
-                alert("Error submitting booking");
+            // } catch (error) {
+            //     alert("Error submitting booking");
             }
         });
     }
@@ -152,4 +152,34 @@ document.addEventListener('DOMContentLoaded', function () {
         message.style.color = 'red';
       }
     });
+<<<<<<< HEAD
   });
+=======
+  });
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const bookingForm = document.querySelector("#booking-form");
+
+    bookingForm.addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        // Collect form data
+        const formData = {
+            checkIn: document.querySelector("#check-in").value,
+            checkOut: document.querySelector("#check-out").value,
+            adults: document.querySelector("#adults").value,
+            children: document.querySelector("#children").value
+        };
+
+        // Validate the form (optional)
+        if (!formData.checkIn || !formData.checkOut || !formData.adults) {
+            alert("Please fill in all required fields.");
+            return;
+        }
+        alert("Booking submitted successfully!");
+        bookingForm.reset();
+        });
+    });
+
+>>>>>>> a388445 (changes in js for submitting the booking form.)
