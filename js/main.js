@@ -132,3 +132,24 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const submitBtn = document.getElementById('newsletterSubmit');
+    const emailInput = document.getElementById('newsletterEmail');
+    const message = document.getElementById('newsletterMsg');
+  
+    submitBtn.addEventListener('click', function () {
+      const email = emailInput.value.trim();
+  
+      if (email && email.includes('@')) {
+        localStorage.setItem('newsletterEmail', email);
+        message.textContent = 'Thank you for subscribing!';
+        message.style.color = 'green';
+        emailInput.value = ''; // Clear input
+      } else {
+        message.textContent = 'Please enter a valid email address.';
+        message.style.color = 'red';
+      }
+    });
+  });
