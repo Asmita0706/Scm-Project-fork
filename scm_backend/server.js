@@ -11,7 +11,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Serve static frontend files (e.g. index.html, main.js, CSS)
-const publicPath = path.join(__dirname, '..'); // Go up one level from scmbackend
+const publicPath = path.join(__dirname, '..'); // Go up one level from scm_backend
 app.use(express.static(publicPath));
 
 // Serve index.html for root route
@@ -34,5 +34,5 @@ app.post('/book', (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-    console.log(✅ Server is running on http://localhost:${PORT});
+    console.log(`✅ Server is running on http://localhost:${PORT}`);
 });
