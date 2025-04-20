@@ -133,6 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+
 //service page newsletter email submission
 document.addEventListener('DOMContentLoaded', function () {
     const submitBtn = document.getElementById('newsletterSubmit');
@@ -153,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
-//   });
+//  service page newsletter js ends here
 
 
   document.addEventListener("DOMContentLoaded", function () {
