@@ -108,26 +108,46 @@
 })(jQuery);
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Booking Form
-    const bookingButton = document.querySelector(".btn.btn-primary.w-100");
-    if (bookingButton) {
-        bookingButton.addEventListener("click", async () => {
-            const checkIn = document.querySelector('#date1 input')?.value;
-            const checkOut = document.querySelector('#date2 input')?.value;
-            const adult = document.querySelectorAll("select")[0]?.value;
-            const child = document.querySelectorAll("select")[1]?.value;
+    const roomBookingForm = document.getElementById('room-booking-form');
+    if (roomBookingForm) {
+        roomBookingForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent default form submission
+
+            const data = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                checkIn: document.getElementById('checkin').value,
+                checkOut: document.getElementById('checkout').value,
+                adults: document.getElementById('select1').value,
+                children: document.getElementById('select2').value,
+                room: document.getElementById('select3').value,
+                request: document.getElementById('message').value
+            };
+
+            // Validation for empty fields
+            if (!data.name || !data.email || !data.checkIn || !data.checkOut || !data.adults || !data.children || !data.room) {
+                alert("Please fill out all required fields.");
+                return;
+            }
 
             try {
-                const response = await fetch('/book', {
+                const response = await fetch('/book-room', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ checkIn, checkOut, adult, child })
+                    body: JSON.stringify(data)
                 });
 
                 const result = await response.json();
-                alert(result.message);
+
+                if (response.ok) {
+                    alert(result.message); // ✅ Booking received successfully!
+                    roomBookingForm.reset(); // Optional: clear form after submission
+                } else {
+                    alert(`Error: ${result.message}`);
+                }
             } catch (error) {
-                alert("Error submitting booking");
+                console.error('Booking submission failed:', error);
+                alert('❌ Failed to submit booking. Please try again.');
             }
         });
     }
@@ -157,27 +177,4 @@ document.addEventListener('DOMContentLoaded', function () {
 //  service page newsletter js ends here
 
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const bookingForm = document.querySelector("#booking-form");
-
-    bookingForm.addEventListener("submit", function (e) {
-        e.preventDefault(); // Prevent the default form submission
-
-        // Collect form data
-        const formData = {
-            checkIn: document.querySelector("#check-in").value,
-            checkOut: document.querySelector("#check-out").value,
-            adults: document.querySelector("#adults").value,
-            children: document.querySelector("#children").value
-        };
-
-        // Validate the form (optional)
-        if (!formData.checkIn || !formData.checkOut || !formData.adults) {
-            alert("Please fill in all required fields.");
-            return;
-        }
-        alert("Booking submitted successfully!");
-        bookingForm.reset();
-        });
-    });
-
+  
